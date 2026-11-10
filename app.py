@@ -7,27 +7,24 @@ Original file is located at
     https://colab.research.google.com/drive/1Dcisr74chOy2HhNkXLLtzv8cF3jOUgYT
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 import os
 
 # Let's find where the 'brain' folder is located in Google Drive
 found_paths = []
-for root, dirs, files in os.walk('/content/drive/MyDrive'):
+for root, dirs, files in os.walk('/content/drive/MyDrive/densenet201_brain_tumor_model.keras'):
     if 'brain' in dirs:
         full_path = os.path.join(root, 'brain')
         found_paths.append(full_path)
         print(f"Found target folder at: {full_path}")
 
 if not found_paths:
-    print("Could not find a folder named 'brain' in '/content/drive/MyDrive'.")
+    print("Could not find a folder named 'brain' in ''.")
     print("Please verify if the folder is named differently or shared with you.")
 
 import os
 
 # Let's check the contents of the detected dataset directory
-base_path = '/content/drive/MyDrive/Brain Tumor detection dataset'
+base_path = '/content/drive/MyDrive/densenet201_brain_tumor_model.keras'
 if os.path.exists(base_path):
     print(f"Directory found: {base_path}")
     print("Contents:", os.listdir(base_path))
