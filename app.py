@@ -57,11 +57,21 @@ st.write(
 
 try:
     model = load_model()
-    class_names = load_class_names()
+        st.write("Model output shape:", model.output_shape)
 
-    if class_names is None:
-        st.error("Please add your 10 class names in class_names.txt.")
-        st.stop()
+    class_names = [
+    "Glioma",
+    "Meningioma",
+    "No Tumor",
+    "Pituitary"
+]
+
+if model.output_shape[-1] != len(class_names):
+    st.error(
+        f"Model has {model.output_shape[-1]} output classes, "
+        f"but we configured {len(class_names)} class names."
+    )
+    st.stop()
 
     if len(class_names) != model.output_shape[-1]:
         st.error(
