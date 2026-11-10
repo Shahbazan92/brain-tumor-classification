@@ -57,7 +57,7 @@ st.write(
 
 try:
     model = load_model()
-        st.write("Model output shape:", model.output_shape)
+
 
     class_names = [
     "Glioma",
